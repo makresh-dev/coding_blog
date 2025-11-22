@@ -5,33 +5,31 @@ import LanguagePanel from "./LanguagePanel";
 import TabBar from "./TabBar";
 import CopyButton from "./CopyButton";
 
-interface CRTFrameProps {
-  lang: string;
-  concept: string;
-  examples?: {
-    basic?: string;
-    advanced?: string;
-    realworld?: string;
-  };
-  active: boolean;
-  index: number;
-  setActiveIndex: (i: number) => void;
-  total: number;
-}
-
 export default function CRTFrame({
   lang,
   concept,
-  examples = {},           // SAFE DEFAULT
+  examples = {},
   active,
   index,
   setActiveIndex,
   total,
-}: CRTFrameProps) {
-  const safeExamples = examples || {};   // ensure never undefined
-  const availableTabs = Object.keys(safeExamples);
+}) {
+  // HARD SANITIZER to strip literal "undefined" coming from any upstream source
+  const sanitize = (v: any) =>
+    typeof v === "string" ? v.replace(/undefined/g, "") : "";
 
-  const [activeTab, setActiveTab] = useState(availableTabs[0] || "");
+  const safeExamples = {
+    basic: sanitize(examples?.basic),
+    advanced: sanitize(examples?.advanced),
+    realworld: sanitize(examples?.realworld),
+  };
+
+  const availableTabs = Object.keys(safeExamples);
+  const [activeTab, setActiveTab] = useState(availableTabs[0] || "basic");
+
+  // ISOLATED PER-CARD TYPING (does not affect other cards)
+  const playKey = `${concept}-${lang}-${activeTab}`;
+
   const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -42,22 +40,6 @@ export default function CRTFrame({
       });
     }
   }, [active]);
-
-  function onKeyDown(e: KeyboardEvent) {
-    if (!active) return;
-
-    if (e.key === "ArrowDown") {
-      setActiveIndex((index + 1) % total);
-    }
-    if (e.key === "ArrowUp") {
-      setActiveIndex((index - 1 + total) % total);
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  });
 
   return (
     <div
@@ -70,21 +52,23 @@ export default function CRTFrame({
       }
       onClick={() => setActiveIndex(index)}
     >
-      <CopyButton getText={() => panelRef.current?.innerText || ""} /><br/>
+      <CopyButton getText={() => panelRef.current?.innerText || ""} />
+
       <div className="text-[#00ffcc] mb-3 drop-shadow-[0_0_2px_#00ffcc] truncate">
-        ┌─[ {concept.toUpperCase()} — {lang.toUpperCase()} ]────────┐
+        ┌─[ {concept.toUpperCase()} — {lang.toUpperCase()} ]──────────────────────────────────────┐
       </div>
 
-      {availableTabs.length > 0 && (
-        <TabBar tabs={availableTabs} active={activeTab} onChange={setActiveTab} />
-      )}
+      <TabBar tabs={availableTabs} active={activeTab} onChange={setActiveTab} />
 
-      <div className="flex-1">
-        <LanguagePanel code={safeExamples[activeTab] || ""} />
+      <div className="flex-1 min-h-0 overflow-auto">
+        <LanguagePanel
+          code={safeExamples[activeTab] ?? ""}   // fully sanitized
+          playKey={playKey}                      // card-local typing
+        />
       </div>
 
       <div className="text-[#00ffcc] mt-3 drop-shadow-[0_0_2px_#00ffcc]">
-        └─────────────────────────────────────────┘
+        └──────────────────────────────────────────────────────────────────┘
       </div>
     </div>
   );
