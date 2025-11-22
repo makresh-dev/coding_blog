@@ -1,0 +1,35 @@
+{
+  "concept": "hashmaps",
+  "category": "data_structures",
+  "description": "A hashmap (or dictionary) stores key-value pairs and provides average O(1) lookup, insertion, and deletion using hashing.",
+  "languages": {
+    "python": {
+      "examples": {
+        "basic": "m = { 'a': 1, 'b': 2 }\nprint(m['a'])",
+        "advanced": "# region dict comprehension\nsquares = {x: x*x for x in range(5)}\n# endregion",
+        "realworld": "config = { 'host': 'localhost', 'port': 8000 }\nport = config['port']"
+      }
+    },
+    "javascript": {
+      "examples": {
+        "basic": "const m = { a: 1, b: 2 };\nconsole.log(m.a);",
+        "advanced": "// region Map object\nconst map = new Map();\nmap.set('a', 1);\nmap.set('b', 2);\n// endregion",
+        "realworld": "const config = { host: 'localhost', port: 8000 };\nconst port = config.port;"
+      }
+    },
+    "go": {
+      "examples": {
+        "basic": "m := map[string]int{\n  \"a\": 1,\n  \"b\": 2,\n}\nfmt.Println(m[\"a\"])",
+        "advanced": "// region check existence\nif v, ok := m[\"c\"]; ok {\n    fmt.Println(v)\n}\n// endregion",
+        "realworld": "config := map[string]string{\n  \"host\": \"localhost\",\n  \"port\": \"8000\",\n}\nhost := config[\"host\"]"
+      }
+    },
+    "cpp": {
+      "examples": {
+        "basic": "std::unordered_map<std::string, int> m = {{\"a\", 1}, {\"b\", 2}};\nstd::cout << m[\"a\"];",
+        "advanced": "// region check existence\nif (m.contains(\"c\")) {\n    std::cout << m[\"c\"];\n}\n// endregion",
+        "realworld": "std::unordered_map<std::string, std::string> config = {\n    {\"host\", \"localhost\"},\n    {\"port\", \"8000\"}\n};\nauto host = config[\"host\"];"
+      }
+    }
+  }
+}

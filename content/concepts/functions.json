@@ -1,0 +1,35 @@
+{
+  "concept": "functions",
+  "category": "programming_fundamentals",
+  "description": "Functions encapsulate reusable blocks of logic that can accept inputs and return outputs.",
+  "languages": {
+    "python": {
+      "examples": {
+        "basic": "def add(a, b):\n    return a + b",
+        "advanced": "# region default parameters\ndef greet(name, msg=\"Hello\"):\n    return f\"{msg}, {name}\"\n# endregion",
+        "realworld": "def fetch_user(id):\n    user = db.get(id)\n    if not user:\n        raise ValueError(\"User not found\")\n    return user"
+      }
+    },
+    "javascript": {
+      "examples": {
+        "basic": "function add(a, b) {\n  return a + b;\n}",
+        "advanced": "// region arrow functions\nconst greet = (name, msg = 'Hello') => `${msg}, ${name}`;\n// endregion",
+        "realworld": "async function fetchUser(id) {\n  const res = await fetch(`/api/user/${id}`);\n  if (!res.ok) throw new Error('Not found');\n  return res.json();\n}"
+      }
+    },
+    "go": {
+      "examples": {
+        "basic": "func Add(a int, b int) int {\n    return a + b\n}",
+        "advanced": "// region named returns\nfunc Split(sum int) (x, y int) {\n    x = sum / 2\n    y = sum - x\n    return\n}\n// endregion",
+        "realworld": "func FetchUser(id int) (User, error) {\n    u, err := db.Get(id)\n    if err != nil { return User{}, err }\n    return u, nil\n}"
+      }
+    },
+    "cpp": {
+      "examples": {
+        "basic": "int add(int a, int b) {\n    return a + b;\n}",
+        "advanced": "// region function templates\ntemplate<typename T>\nT add(T a, T b) { return a + b; }\n// endregion",
+        "realworld": "User fetchUser(int id) {\n    auto u = db.get(id);\n    if (!u) throw std::runtime_error(\"Not found\");\n    return *u;\n}"
+      }
+    }
+  }
+}

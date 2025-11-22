@@ -1,0 +1,35 @@
+{
+  "concept": "stacks",
+  "category": "data_structures",
+  "description": "A stack is a Last-In-First-Out (LIFO) data structure supporting push and pop operations.",
+  "languages": {
+    "python": {
+      "examples": {
+        "basic": "stack = []\nstack.append(1)\nstack.append(2)\nval = stack.pop()",
+        "advanced": "# region class-based stack\nclass Stack:\n    def __init__(self): self.s = []\n    def push(self, x): self.s.append(x)\n    def pop(self): return self.s.pop()\n# endregion",
+        "realworld": "undo_stack = []\nundo_stack.append(state)\nstate = undo_stack.pop()"
+      }
+    },
+    "javascript": {
+      "examples": {
+        "basic": "const stack = [];\nstack.push(1);\nstack.push(2);\nconst val = stack.pop();",
+        "advanced": "// region class-based stack\nclass Stack {\n  constructor() { this.s = []; }\n  push(x) { this.s.push(x); }\n  pop() { return this.s.pop(); }\n}\n// endregion",
+        "realworld": "const history = [];\nhistory.push(route);\nroute = history.pop();"
+      }
+    },
+    "go": {
+      "examples": {
+        "basic": "stack := []int{}\nstack = append(stack, 1)\nstack = append(stack, 2)\nval := stack[len(stack)-1]\nstack = stack[:len(stack)-1]",
+        "advanced": "// region struct stack\ntype Stack struct { data []int }\nfunc (s *Stack) Push(x int) { s.data = append(s.data, x) }\nfunc (s *Stack) Pop() int {\n    v := s.data[len(s.data)-1]\n    s.data = s.data[:len(s.data)-1]\n    return v\n}\n// endregion",
+        "realworld": "var history []State\nhistory = append(history, cur)\ncur = history[len(history)-1]\nhistory = history[:len(history)-1]"
+      }
+    },
+    "cpp": {
+      "examples": {
+        "basic": "std::vector<int> stack;\nstack.push_back(1);\nstack.push_back(2);\nint val = stack.back();\nstack.pop_back();",
+        "advanced": "// region template stack\ntemplate<typename T>\nclass Stack {\n  std::vector<T> s;\npublic:\n  void push(T x){ s.push_back(x); }\n  T pop(){ T v=s.back(); s.pop_back(); return v; }\n};\n// endregion",
+        "realworld": "std::vector<State> history;\nhistory.push_back(cur);\ncur = history.back();\nhistory.pop_back();"
+      }
+    }
+  }
+}

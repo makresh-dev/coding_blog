@@ -1,0 +1,35 @@
+{
+  "concept": "immutability",
+  "category": "programming_fundamentals",
+  "description": "Immutability means once a value is created, it cannot be modified. Instead of changing data in place, new values are returned.",
+  "languages": {
+    "python": {
+      "examples": {
+        "basic": "x = 10\n# integers are immutable\ny = x\nx = x + 5  # creates new integer",
+        "advanced": "# region tuples are immutable\nt = (1, 2, 3)\n# t[0] = 99  # error\n# endregion",
+        "realworld": "# strings are immutable\npath = \"/api\"\nfull = path + \"/v1\"  # new string"
+      }
+    },
+    "javascript": {
+      "examples": {
+        "basic": "const x = 10; // cannot be reassigned\n// but objects inside const can be mutated",
+        "advanced": "// region Object.freeze\nconst user = Object.freeze({ name: 'A' });\n// user.name = 'B'; // ignored in strict mode\n// endregion",
+        "realworld": "const config = { retries: 3 };\nconst newConfig = { ...config, retries: 5 };"
+      }
+    },
+    "go": {
+      "examples": {
+        "basic": "// basic types are immutable-like\nx := 10\ny := x\nx = 20 // y remains unchanged",
+        "advanced": "// region copy-on-write pattern\norig := []int{1,2,3}\ncopyArr := append([]int{}, orig...)\ncopyArr[0] = 99\n// endregion",
+        "realworld": "// avoid mutating shared state in goroutines\ntype Config struct { Timeout int }\nnewConf := Config{ Timeout: oldConf.Timeout }"
+      }
+    },
+    "cpp": {
+      "examples": {
+        "basic": "const int x = 10; // cannot modify x",
+        "advanced": "// region const correctness\nvoid process(const std::vector<int>& data) {\n    // data cannot be modified\n}\n// endregion",
+        "realworld": "const std::string base = \"/app\";\nauto path = base + \"/config\"; // new string"
+      }
+    }
+  }
+}

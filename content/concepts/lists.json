@@ -1,0 +1,35 @@
+{
+  "concept": "lists",
+  "category": "data_structures",
+  "description": "Lists are ordered, mutable collections of elements that support dynamic sizing and sequential access.",
+  "languages": {
+    "python": {
+      "examples": {
+        "basic": "lst = [1, 2, 3]\nlst.append(4)",
+        "advanced": "# region list comprehension\nsquares = [x*x for x in range(5)]\n# endregion",
+        "realworld": "users = load_users()\nactive = [u for u in users if u.active]"
+      }
+    },
+    "javascript": {
+      "examples": {
+        "basic": "const lst = [1, 2, 3];\nlst.push(4);",
+        "advanced": "// region spread & concat\nconst merged = [...lst, ...other];\n// endregion",
+        "realworld": "const users = fetchUsers();\nconst active = users.filter(u => u.active);"
+      }
+    },
+    "go": {
+      "examples": {
+        "basic": "lst := []int{1,2,3}\nlst = append(lst, 4)",
+        "advanced": "// region make with capacity\nlst := make([]int, 0, 10)\nlst = append(lst, 1)\n// endregion",
+        "realworld": "users := loadUsers()\nvar active []User\nfor _, u := range users {\n    if u.Active { active = append(active, u) }\n}"
+      }
+    },
+    "cpp": {
+      "examples": {
+        "basic": "std::vector<int> lst = {1,2,3};\nlst.push_back(4);",
+        "advanced": "// region reserve capacity\nstd::vector<int> v;\nv.reserve(10);\n// endregion",
+        "realworld": "auto users = loadUsers();\nstd::vector<User> active;\nfor (auto &u : users) if (u.active) active.push_back(u);"
+      }
+    }
+  }
+}

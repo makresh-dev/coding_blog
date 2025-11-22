@@ -1,0 +1,35 @@
+{
+  "concept": "closures",
+  "category": "programming_fundamentals",
+  "description": "Closures allow functions to capture variables from their surrounding lexical scope, enabling persistent state across function calls.",
+  "languages": {
+    "python": {
+      "examples": {
+        "basic": "def outer():\n    x = 10\n    def inner():\n        return x\n    return inner",
+        "advanced": "# region factory closure\ndef multiplier(n):\n    def inner(x):\n        return x * n\n    return inner\n# endregion",
+        "realworld": "def make_cache():\n    store = {}\n    def get(key):\n        if key not in store:\n            store[key] = compute(key)\n        return store[key]\n    return get"
+      }
+    },
+    "javascript": {
+      "examples": {
+        "basic": "function outer() {\n  let x = 10;\n  return function inner() {\n    return x;\n  };\n}",
+        "advanced": "// region factory closure\nfunction multiplier(n) {\n  return function(x) {\n    return x * n;\n  };\n}\n// endregion",
+        "realworld": "function makeCache() {\n  const store = {};\n  return function(key) {\n    if (!(key in store)) {\n      store[key] = compute(key);\n    }\n    return store[key];\n  };\n}"
+      }
+    },
+    "go": {
+      "examples": {
+        "basic": "func outer() func() int {\n    x := 10\n    return func() int { return x }\n}",
+        "advanced": "// region closure factory\nfunc Multiplier(n int) func(int) int {\n    return func(x int) int { return x * n }\n}\n// endregion",
+        "realworld": "func MakeCache() func(int) int {\n    store := map[int]int{}\n    return func(k int) int {\n        if v, ok := store[k]; ok {\n            return v\n        }\n        c := compute(k)\n        store[k] = c\n        return c\n    }\n}"
+      }
+    },
+    "cpp": {
+      "examples": {
+        "basic": "auto outer = [](){\n    int x = 10;\n    return [x]() { return x; };\n};",
+        "advanced": "// region closure factory (lambda)\nauto multiplier = [](int n){\n    return [n](int x){ return x * n; };\n};\n// endregion",
+        "realworld": "auto makeCache = [](){\n    std::unordered_map<int,int> store;\n    return [store](int key) mutable {\n        if(store.contains(key)) return store[key];\n        int val = compute(key);\n        store[key] = val;\n        return val;\n    };\n};"
+      }
+    }
+  }
+}

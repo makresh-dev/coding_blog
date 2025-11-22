@@ -1,0 +1,18 @@
+{
+  "concept": "pointers",
+  "description": "Pointers store memory addresses and allow indirect access to values.",
+  "languages": {
+    "python": {
+      "code": "# Python does not have pointers, but references behave similarly.\na = [10]\nb = a\nb[0] = 20  # modifies a since both point to same list"
+    },
+    "javascript": {
+      "code": "// JavaScript also uses references for objects\nconst a = { value: 10 };\nconst b = a;\nb.value = 20; // modifies a"
+    },
+    "go": {
+      "code": "func main() {\n  x := 10\n  p := &x\n  *p = 20 // modifies x\n}"
+    },
+    "cpp": {
+      "code": "int x = 10;\nint* p = &x;\n*p = 20; // modifies x"
+    }
+  }
+}

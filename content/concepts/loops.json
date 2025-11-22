@@ -1,0 +1,35 @@
+{
+  "concept": "loops",
+  "category": "programming_fundamentals",
+  "description": "Loops repeatedly execute a block of code until a specified condition is met.",
+  "languages": {
+    "python": {
+      "examples": {
+        "basic": "for i in range(3):\n    print(i)\n\nx = 0\nwhile x < 3:\n    print(x)\n    x += 1",
+        "advanced": "# region nested loops\nfor i in range(2):\n    for j in range(2):\n        print(i, j)\n# endregion",
+        "realworld": "for user in users:\n    send_email(user)"
+      }
+    },
+    "javascript": {
+      "examples": {
+        "basic": "for (let i = 0; i < 3; i++) {\n  console.log(i);\n}\n\nlet x = 0;\nwhile (x < 3) {\n  console.log(x);\n  x++;\n}",
+        "advanced": "// region for...of and for...in\nfor (const v of arr) {\n  console.log(v);\n}\nfor (const key in obj) {\n  console.log(key);\n}\n// endregion",
+        "realworld": "for (const user of users) {\n  notify(user);\n}"
+      }
+    },
+    "go": {
+      "examples": {
+        "basic": "for i := 0; i < 3; i++ {\n    fmt.Println(i)\n}\n\nx := 0\nfor x < 3 {\n    fmt.Println(x)\n    x++\n}",
+        "advanced": "// region range loop\nnums := []int{1,2,3}\nfor _, v := range nums {\n    fmt.Println(v)\n}\n// endregion",
+        "realworld": "for _, user := range users {\n    SendMail(user)\n}"
+      }
+    },
+    "cpp": {
+      "examples": {
+        "basic": "for (int i = 0; i < 3; i++) {\n    std::cout << i;\n}\n\nint x = 0;\nwhile (x < 3) {\n    std::cout << x;\n    x++;\n}",
+        "advanced": "// region range-based loop\nstd::vector<int> nums = {1,2,3};\nfor (int v : nums) {\n    std::cout << v;\n}\n// endregion",
+        "realworld": "for (auto &user : users) {\n    notify(user);\n}"
+      }
+    }
+  }
+}

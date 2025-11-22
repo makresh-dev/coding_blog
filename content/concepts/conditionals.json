@@ -1,0 +1,35 @@
+{
+  "concept": "conditionals",
+  "category": "programming_fundamentals",
+  "description": "Conditionals execute different code paths based on whether a boolean expression evaluates to true or false.",
+  "languages": {
+    "python": {
+      "examples": {
+        "basic": "x = 10\nif x > 5:\n    print('big')\nelse:\n    print('small')",
+        "advanced": "# region chained conditions\nx = 42\nif x < 0:\n    print('negative')\nelif x == 0:\n    print('zero')\nelse:\n    print('positive')\n# endregion",
+        "realworld": "if user.is_admin:\n    grant_access()\nelse:\n    deny_access()"
+      }
+    },
+    "javascript": {
+      "examples": {
+        "basic": "let x = 10;\nif (x > 5) {\n  console.log('big');\n} else {\n  console.log('small');\n}",
+        "advanced": "// region nested conditionals\nif (user) {\n  if (user.active) {\n    startSession();\n  } else {\n    logout();\n  }\n}\n// endregion",
+        "realworld": "if (response.ok) {\n  handleSuccess();\n} else {\n  handleError();\n}"
+      }
+    },
+    "go": {
+      "examples": {
+        "basic": "x := 10\nif x > 5 {\n    fmt.Println(\"big\")\n} else {\n    fmt.Println(\"small\")\n}",
+        "advanced": "// region init statement in if\nif val := compute(); val > 100 {\n    fmt.Println(\"large\")\n} else {\n    fmt.Println(\"normal\")\n}\n// endregion",
+        "realworld": "if resp.StatusCode == 200 {\n    process(resp)\n} else {\n    logError(resp)\n}"
+      }
+    },
+    "cpp": {
+      "examples": {
+        "basic": "int x = 10;\nif (x > 5) {\n    std::cout << \"big\";\n} else {\n    std::cout << \"small\";\n}",
+        "advanced": "// region multiple conditions\nint x = 42;\nif (x < 0) std::cout << \"neg\";\nelse if (x == 0) std::cout << \"zero\";\nelse std::cout << \"pos\";\n// endregion",
+        "realworld": "if (isAdmin(user)) {\n    grantAccess();\n} else {\n    denyAccess();\n}"
+      }
+    }
+  }
+}

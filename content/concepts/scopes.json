@@ -1,0 +1,35 @@
+{
+  "concept": "scopes",
+  "category": "programming_fundamentals",
+  "description": "Scope defines where variables can be accessed, including local, global, and enclosing contexts.",
+  "languages": {
+    "python": {
+      "examples": {
+        "basic": "x = 5  # global\n\ndef func():\n    y = 10  # local\n    return y\n",
+        "advanced": "# region enclosing scope\n def outer():\n     x = 5\n     def inner():\n         return x\n     return inner\n# endregion",
+        "realworld": "counter = 0\n\ndef inc():\n    global counter\n    counter += 1"
+      }
+    },
+    "javascript": {
+      "examples": {
+        "basic": "let x = 5; // global in module\nfunction f() {\n  let y = 10; // local\n  return y;\n}",
+        "advanced": "// region closure scope\nfunction outer() {\n  let x = 5;\n  return function inner() { return x; };\n}\n// endregion",
+        "realworld": "let count = 0;\nfunction inc() {\n  count++;\n}"
+      }
+    },
+    "go": {
+      "examples": {
+        "basic": "var x int = 5 // package scope\nfunc f() {\n    y := 10 // local\n    _ = y\n}",
+        "advanced": "// region closure scope\nfunc outer() func() int {\n    x := 5\n    return func() int { return x }\n}\n// endregion",
+        "realworld": "var counter int\nfunc Inc() { counter++ }"
+      }
+    },
+    "cpp": {
+      "examples": {
+        "basic": "int x = 5; // global\nvoid f() {\n    int y = 10; // local\n}",
+        "advanced": "// region lambda capture scope\nauto outer = [](){\n    int x = 5;\n    return [x](){ return x; };\n};\n// endregion",
+        "realworld": "int counter = 0;\nvoid inc(){ counter++; }"
+      }
+    }
+  }
+}

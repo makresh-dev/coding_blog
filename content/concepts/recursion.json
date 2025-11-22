@@ -1,0 +1,35 @@
+{
+  "concept": "recursion",
+  "category": "programming_fundamentals",
+  "description": "Recursion is a technique where a function calls itself to solve smaller instances of a problem.",
+  "languages": {
+    "python": {
+      "examples": {
+        "basic": "def factorial(n):\n    if n == 0:\n        return 1\n    return n * factorial(n - 1)",
+        "advanced": "# region tail recursion (Python doesn't optimize)\ndef sum_tail(n, acc=0):\n    if n == 0:\n        return acc\n    return sum_tail(n - 1, acc + n)\n# endregion",
+        "realworld": "def traverse(node):\n    if not node: return\n    process(node)\n    traverse(node.left)\n    traverse(node.right)"
+      }
+    },
+    "javascript": {
+      "examples": {
+        "basic": "function factorial(n) {\n  if (n === 0) return 1;\n  return n * factorial(n - 1);\n}",
+        "advanced": "// region optimized tail call (ES6 spec)\nfunction sumTail(n, acc = 0) {\n  if (n === 0) return acc;\n  return sumTail(n - 1, acc + n);\n}\n// endregion",
+        "realworld": "function traverse(node) {\n  if (!node) return;\n  process(node);\n  traverse(node.left);\n  traverse(node.right);\n}"
+      }
+    },
+    "go": {
+      "examples": {
+        "basic": "func Factorial(n int) int {\n    if n == 0 { return 1 }\n    return n * Factorial(n-1)\n}",
+        "advanced": "// region recursion with accumulator\nfunc SumTail(n, acc int) int {\n    if n == 0 { return acc }\n    return SumTail(n-1, acc+n)\n}\n// endregion",
+        "realworld": "func Traverse(n *Node) {\n    if n == nil { return }\n    Process(n)\n    Traverse(n.Left)\n    Traverse(n.Right)\n}"
+      }
+    },
+    "cpp": {
+      "examples": {
+        "basic": "int factorial(int n) {\n    if (n == 0) return 1;\n    return n * factorial(n - 1);\n}",
+        "advanced": "// region recursion with accumulator\nint sumTail(int n, int acc = 0) {\n    if (n == 0) return acc;\n    return sumTail(n - 1, acc + n);\n}\n// endregion",
+        "realworld": "void traverse(Node* node) {\n    if (!node) return;\n    process(node);\n    traverse(node->left);\n    traverse(node->right);\n}"
+      }
+    }
+  }
+}

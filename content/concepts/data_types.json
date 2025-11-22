@@ -1,0 +1,35 @@
+{
+  "concept": "data_types",
+  "category": "programming_fundamentals",
+  "description": "Data types define the kind of values a variable can hold.",
+  "languages": {
+    "python": {
+      "examples": {
+        "basic": "x = 10     # int\ny = 3.14   # float\nname = \"abc\"  # str",
+        "advanced": "# region custom type\nfrom typing import List\nnums: List[int] = [1,2,3]\n# endregion",
+        "realworld": "price: float = fetch_price()\nname: str = config['username']"
+      }
+    },
+    "javascript": {
+      "examples": {
+        "basic": "let n = 10;\nlet p = 3.14;\nlet s = \"hello\";",
+        "advanced": "// region complex types\nlet user = {name: \"A\", age: 20};\nlet ids = [1,2,3];\n// endregion",
+        "realworld": "let config = {\n  retry: 3,\n  timeout: 2000,\n};"
+      }
+    },
+    "go": {
+      "examples": {
+        "basic": "var x int = 10\nvar y float64 = 3.14",
+        "advanced": "// region structs\n type User struct {\n   Name string\n   Age int\n }\n// endregion",
+        "realworld": "type Config struct {\n  Port int\n  Debug bool\n}"
+      }
+    },
+    "cpp": {
+      "examples": {
+        "basic": "int x = 10;\ndouble p = 3.14;",
+        "advanced": "// region custom type\nstruct User { string name; int age; };\n// endregion",
+        "realworld": "std::vector<int> ids = {1,2,3};"
+      }
+    }
+  }
+}

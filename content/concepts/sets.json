@@ -1,0 +1,35 @@
+{
+  "concept": "sets",
+  "category": "data_structures",
+  "description": "A set is an unordered collection of unique elements that provides fast membership testing.",
+  "languages": {
+    "python": {
+      "examples": {
+        "basic": "s = {1, 2, 3}\ns.add(4)",
+        "advanced": "# region set operations\na = {1,2,3}\nb = {3,4,5}\nunion = a | b\ninter = a & b\n# endregion",
+        "realworld": "seen = set()\nfor x in data:\n    if x in seen: continue\n    seen.add(x)"
+      }
+    },
+    "javascript": {
+      "examples": {
+        "basic": "const s = new Set([1,2,3]);\ns.add(4);",
+        "advanced": "// region spread usage\nconst s1 = new Set([1,2]);\nconst s2 = new Set([2,3]);\nconst union = new Set([...s1, ...s2]);\n// endregion",
+        "realworld": "const seen = new Set();\ndata.forEach(x => {\n  if (!seen.has(x)) seen.add(x);\n});"
+      }
+    },
+    "go": {
+      "examples": {
+        "basic": "// sets use maps internally\ns := map[int]bool{1:true,2:true,3:true}\ns[4] = true",
+        "advanced": "// region membership\nif s[3] { fmt.Println(\"found\") }\n// endregion",
+        "realworld": "visited := map[string]bool{}\nfor _, v := range nodes {\n  if visited[v] { continue }\n  visited[v] = true\n}"
+      }
+    },
+    "cpp": {
+      "examples": {
+        "basic": "std::unordered_set<int> s = {1,2,3};\ns.insert(4);",
+        "advanced": "// region membership\nif (s.contains(3)) {\n    std::cout << \"found\";\n}\n// endregion",
+        "realworld": "std::unordered_set<std::string> seen;\nfor (auto &v : data) {\n    if (!seen.count(v)) seen.insert(v);\n}"
+      }
+    }
+  }
+}

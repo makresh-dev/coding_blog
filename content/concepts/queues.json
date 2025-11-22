@@ -1,0 +1,35 @@
+{
+  "concept": "queues",
+  "category": "data_structures",
+  "description": "A queue is a First-In-First-Out (FIFO) data structure supporting enqueue and dequeue operations.",
+  "languages": {
+    "python": {
+      "examples": {
+        "basic": "from collections import deque\nq = deque()\nq.append(1)    # enqueue\nq.append(2)\nval = q.popleft()  # dequeue",
+        "advanced": "# region queue class\nclass Queue:\n    def __init__(self): self.q = deque()\n    def enqueue(self, x): self.q.append(x)\n    def dequeue(self): return self.q.popleft()\n# endregion",
+        "realworld": "tasks = deque()\ntasks.append(job)\nnext_job = tasks.popleft()"
+      }
+    },
+    "javascript": {
+      "examples": {
+        "basic": "const q = [];\nq.push(1);     // enqueue\nq.push(2);\nconst val = q.shift();   // dequeue",
+        "advanced": "// region class queue\nclass Queue {\n  constructor() { this.q = []; }\n  enqueue(x) { this.q.push(x); }\n  dequeue() { return this.q.shift(); }\n}\n// endregion",
+        "realworld": "const events = [];\nevents.push(evt);\nconst next = events.shift();"
+      }
+    },
+    "go": {
+      "examples": {
+        "basic": "q := []int{}\nq = append(q, 1)   // enqueue\nq = append(q, 2)\nval := q[0]        // dequeue\nq = q[1:]",
+        "advanced": "// region queue struct\ntype Queue struct { data []int }\nfunc (q *Queue) Enqueue(x int) { q.data = append(q.data, x) }\nfunc (q *Queue) Dequeue() int {\n    v := q.data[0]\n    q.data = q.data[1:]\n    return v\n}\n// endregion",
+        "realworld": "var jobs []Job\njobs = append(jobs, j)\nnext := jobs[0]\njobs = jobs[1:]"
+      }
+    },
+    "cpp": {
+      "examples": {
+        "basic": "std::queue<int> q;\nq.push(1);   // enqueue\nq.push(2);\nint val = q.front();\nq.pop();     // dequeue",
+        "advanced": "// region custom queue with deque\nstd::deque<int> dq;\ndq.push_back(1);\ndq.push_back(2);\nint v = dq.front();\ndq.pop_front();\n// endregion",
+        "realworld": "std::queue<Job> jobs;\njobs.push(job);\nJob next = jobs.front();\njobs.pop();"
+      }
+    }
+  }
+}

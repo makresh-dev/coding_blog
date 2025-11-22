@@ -1,0 +1,35 @@
+{
+  "concept": "operators",
+  "category": "programming_fundamentals",
+  "description": "Operators perform arithmetic, logical, and comparison operations on data.",
+  "languages": {
+    "python": {
+      "examples": {
+        "basic": "a = 10 + 5\nb = 10 > 3",
+        "advanced": "# region operator overloading\nclass Vector:\n    def __init__(self,x): self.x=x\n    def __add__(self,o): return Vector(self.x + o.x)\n# endregion",
+        "realworld": "if retries > max_retries:\n    raise Exception(\"Too many attempts\")"
+      }
+    },
+    "javascript": {
+      "examples": {
+        "basic": "let a = 10 + 5;\nlet b = 10 > 3;",
+        "advanced": "// region logical chaining\nif (user && user.active && user.age > 18) {}\n// endregion",
+        "realworld": "let valid = score >= passing && attempts < maxAttempts;"
+      }
+    },
+    "go": {
+      "examples": {
+        "basic": "a := 10 + 5\nb := 10 > 3",
+        "advanced": "// region pointer ops\nx := 10\np := &x\n*p = 20\n// endregion",
+        "realworld": "if retries >= limit { return errors.New(\"failed\") }"
+      }
+    },
+    "cpp": {
+      "examples": {
+        "basic": "int a = 10 + 5;\nbool b = 10 > 3;",
+        "advanced": "// region operator overloading\nstruct V{int x;};\nV operator+(const V&a,const V&b){return V{a.x+b.x};}\n// endregion",
+        "realworld": "if(score >= pass && attempts < max) handle();"
+      }
+    }
+  }
+}

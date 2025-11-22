@@ -1,0 +1,35 @@
+{
+  "concept": "variables",
+  "category": "programming_fundamentals",
+  "description": "Variables store data values referenced by identifiers in memory.",
+  "languages": {
+    "python": {
+      "examples": {
+        "basic": "x = 10\ny = 'hello'",
+        "advanced": "# region multiple assignment\nx, y, z = 1, 2, 3\n# endregion",
+        "realworld": "user_count = fetch_total_users()\nthreshold = 100\nif user_count > threshold:\n    alert_admin()"
+      }
+    },
+    "javascript": {
+      "examples": {
+        "basic": "let x = 10;\nconst y = \"hello\";",
+        "advanced": "// region destructuring\nconst [a, b] = [1, 2];\nconst { name, age } = user;\n// endregion",
+        "realworld": "let retries = 3;\nwhile (retries--) {\n  if (attemptLogin()) break;\n}"
+      }
+    },
+    "go": {
+      "examples": {
+        "basic": "var x int = 10\nmessage := \"hello\"",
+        "advanced": "// region block scoping\n{\n  temp := compute()\n  fmt.Println(temp)\n}\n// endregion",
+        "realworld": "var attempts int\nfor attempts < 5 {\n  if connect() {\n    break\n  }\n  attempts++\n}"
+      }
+    },
+    "cpp": {
+      "examples": {
+        "basic": "int x = 10;\nstd::string y = \"hello\";",
+        "advanced": "// region type inference\nauto value = compute();\n// endregion",
+        "realworld": "int counter = 0;\nwhile(counter < limit) {\n    process(counter);\n    counter++;\n}"
+      }
+    }
+  }
+}
