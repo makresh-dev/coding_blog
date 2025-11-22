@@ -43,20 +43,21 @@ export default function CRTFrame({
 
   return (
     <div
-      ref={panelRef}
-      className={
-        "relative border p-5 flex flex-col h-full bg-black/40 backdrop-blur-sm transition-all " +
-        (active
-          ? "border-[#00ffcc] shadow-[0_0_25px_rgba(0,255,200,0.3)]"
-          : "border-[#00ff88]/40 shadow-[0_0_10px_rgba(0,255,150,0.1)]")
-      }
-      onClick={() => setActiveIndex(index)}
-    >
-      <CopyButton getText={() => panelRef.current?.innerText || ""} />
+  ref={panelRef}
+  className={
+    "relative border p-5 flex flex-col h-full bg-black/60 backdrop-blur-sm transition-all " +
+    (active
+      ? "border-[#22ff77] shadow-[0_0_25px_rgba(0,255,120,0.4)]"
+      : "border-[#00ff66]/40 shadow-[0_0_12px_rgba(0,255,80,0.15)]")
+  }
+  onClick={() => setActiveIndex(index)}
+>
 
-      <div className="text-[#00ffcc] mb-3 drop-shadow-[0_0_2px_#00ffcc] truncate">
-        ┌─[ {concept.toUpperCase()} — {lang.toUpperCase()} ]──────────────────────────────────────┐
-      </div>
+      <CopyButton getText={() => panelRef.current?.innerText || ""} />
+      <br/>
+      <div className="text-[#00ff66] mb-3 drop-shadow-[0_0_4px_#00ff66] truncate">
+  ┌─[ {concept.toUpperCase()} — {lang.toUpperCase()} ]───────────────────────────────┐
+</div>
 
       <TabBar tabs={availableTabs} active={activeTab} onChange={setActiveTab} />
 
@@ -67,9 +68,9 @@ export default function CRTFrame({
         />
       </div>
 
-      <div className="text-[#00ffcc] mt-3 drop-shadow-[0_0_2px_#00ffcc]">
-        └──────────────────────────────────────────────────────────────────┘
-      </div>
+      <div className="text-[#00ff66] mt-3 drop-shadow-[0_0_4px_#00ff66]">
+  └──────────────────────────────────────────────────────────────────────────────────┘
+</div>
     </div>
   );
 }

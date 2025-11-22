@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
+/* =============================
+   GLOBAL CRT ANIMATIONS
+   ============================= */
 
-/* 1. CRT Flicker */
 @keyframes crt-flicker {
   0% { opacity: 0.95; }
   5% { opacity: 1; }
@@ -14,7 +16,6 @@
   animation: crt-flicker 0.18s infinite;
 }
 
-/* 2. Glow Pulse */
 @keyframes crt-glow {
   0%, 100% { text-shadow: 0 0 2px #00ff88; }
   50% { text-shadow: 0 0 6px #00ff88; }
@@ -24,29 +25,17 @@
   animation: crt-glow 2.4s ease-in-out infinite;
 }
 
-/* 3. Screen Warm Boot */
 @keyframes crt-warmboot {
-  0% {
-    transform: scaleY(0.05);
-    opacity: 0;
-  }
-  40% {
-    transform: scaleY(0.02);
-    opacity: 1;
-  }
-  60% {
-    transform: scaleY(1.4);
-  }
-  100% {
-    transform: scaleY(1);
-  }
+  0% { transform: scaleY(0.05); opacity: 0; }
+  40% { transform: scaleY(0.02); opacity: 1; }
+  60% { transform: scaleY(1.4); }
+  100% { transform: scaleY(1); }
 }
 
 .crt-warmboot {
-  animation: crt-warmboot 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: crt-warmboot 0.6s cubic-bezier(0.16,1,0.3,1);
 }
 
-/* 4. Chromatic Aberration (glitch edge) */
 @keyframes crt-chroma {
   0% { text-shadow: 1px 0 0 #00ffa2, -1px 0 0 #0066ff; }
   50% { text-shadow: 2px 0 1px #00ffa2, -2px 0 1px #0066ff; }
@@ -57,48 +46,89 @@
   animation: crt-chroma 3s infinite alternate;
 }
 
-/* 5. Scanline Shine */
-@keyframes crt-scanshine {
-  0% { opacity: 0; top: -20%; }
-  100% { opacity: 0.15; top: 120%; }
-}
-
-.crt-scanshine {
-  pointer-events: none;
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 20%;
-  background: linear-gradient(rgba(255,255,255,0.05), transparent);
-  animation: crt-scanshine 4s linear infinite;
-}
-
-
 @keyframes crt-blink {
-  0% { opacity: 1; }
+  0%, 100% { opacity: 1; }
   50% { opacity: 0; }
-  100% { opacity: 1; }
 }
 
 .crt-cursor {
   animation: crt-blink 0.8s steps(1) infinite;
 }
 
-@keyframes fadeIn {
-  to { opacity: 1; }
+@keyframes crt-scanshine {
+  0% { opacity: 0; transform: translateY(-30%); }
+  100% { opacity: 0.15; transform: translateY(130%); }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.crt-scanshine {
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 18%;
+  background: linear-gradient(rgba(255,255,255,0.06), transparent);
+  animation: crt-scanshine 4s linear infinite;
 }
 
+/* =============================
+   DOOM EMACS CRT GLOBAL THEME
+   ============================= */
 
-@keyframes crt-flash {
-  0% { background-color: rgba(0, 255, 180, 0.25); }
-  100% { background-color: transparent; }
+:root {
+  --crt-green: #00ff66;
+  --crt-green-soft: rgba(0,255,80,0.35);
+  --crt-scanline: rgba(0,255,80,0.05);
 }
 
-.crt-flash {
-  animation: crt-flash 0.4s ease-out;
+/* Fullscreen dark background + reset */
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: black !important;
+  overflow-x: hidden;
+  color: var(--crt-green);
+  font-family: monospace;
+  text-shadow:
+    0 0 8px var(--crt-green),
+    0 0 14px rgba(0,255,100,0.4);
+}
+
+/* --- MAIN CRT OVERLAY LAYERS --- */
+html::before {
+  /* scanlines */
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(var(--crt-scanline) 2px, transparent 2px);
+  background-size: 100% 5px;
+  z-index: 1;
+}
+
+html::after {
+  /* phosphor bloom */
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 50px var(--crt-green-soft);
+  z-index: 0;
+}
+
+/* Ensure all app content stays on top */
+body * {
+  position: relative;
+  z-index: 1000;
+}
+
+/* Cursor flicker overlay class */
+.crt-cursor-overlay {
+  position: absolute;
+  opacity: 0.6;
+  mix-blend-mode: screen;
+  animation: crt-blink 0.35s steps(1) infinite;
+  z-index: 500; /* behind content but above bloom */
 }
